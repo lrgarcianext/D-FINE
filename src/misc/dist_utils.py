@@ -44,7 +44,7 @@ def setup_distributed(
         WORLD_SIZE = int(os.getenv("WORLD_SIZE", 1))
 
         # torch.distributed.init_process_group(backend=backend, init_method='env://')
-        torch.distributed.init_process_group(init_method="env://")
+        torch.distributed.init_process_group(init_method="env://",device_ids=[0]) #entrenar en una sola GPU 
         torch.distributed.barrier()
 
         rank = torch.distributed.get_rank()
