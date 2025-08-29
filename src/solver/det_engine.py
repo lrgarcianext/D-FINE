@@ -122,7 +122,7 @@ def train_one_epoch(
         loss_value = sum(loss_dict_reduced.values())
         losses.append(loss_value.detach().cpu().numpy())
 
-        if not math.isfinite(loss_value).detach().cpu(): #evita warning
+        if not math.isfinite(loss_value.detach().cpu().numpy()): #evita warning
             print("Loss is {}, stopping training".format(loss_value))
             print(loss_dict_reduced)
             sys.exit(1)
